@@ -16,6 +16,49 @@
 <link rel="icon" type="image/x-icon" href="https://www.palingit.com/favicon.ico">
 <meta name="description" content="HTML Replit Coding">
 
+<!-- TAMBAHAN: CSS untuk Love Berterbangan -->
+<style>
+.floating-love {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    font-size: 20px;
+    animation: floatUp linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.floating-love:nth-child(2n) {
+    animation-delay: -2s;
+    font-size: 25px;
+}
+
+.floating-love:nth-child(3n) {
+    animation-delay: -4s;
+    font-size: 18px;
+}
+
+.floating-love:nth-child(4n) {
+    animation-delay: -6s;
+    font-size: 22px;
+}
+
+.floating-love:nth-child(5n) {
+    animation-delay: -8s;
+    font-size: 16px;
+}
+</style>
+
 </head>
 <body>
 	
@@ -23,7 +66,7 @@
    <audio src="123.mp3" id="linkmp3" class="sembunyi"></audio>
    
    <div id="bodyblur">
-     <!-- Wallpaper --><img src="e (2).jpg" id="wallpaper"/><div id="beneranblur"></div>
+     <!-- Wallpaper --><img src="c7de3497-f73f-49c2-9bee-2564c31ad8a8.jpg" id="wallpaper"/><div id="beneranblur"></div>
    </div>
    
    <div id='Content'>
@@ -112,7 +155,40 @@
   var tompositif = 'Mau';
   var tomnegatif = 'Engga';
     
-    async function menuju(){pesanwhatsapp = "Makasii  " + nama + " ultah ><";await swals.fire('OK!', 'Kirim jawabannya ke WhatsApp aku, ya!', 'success');window.location = "https://api.whatsapp.com/send?phone=081343160169&text=" + pesanwhatsapp;}
+    async function menuju(){pesanwhatsapp = "Makasii  " + nama + " ultah ><";await swals.fire('OK!', 'Kirim jawabannya ke WhatsApp aku, ya!', 'success');window.location = "https://api.whatsapp.com/send?phone=+6281343160169&text=" + pesanwhatsapp;}
+
+// TAMBAHAN: Function untuk Love Berterbangan
+function createFloatingLove() {
+    const loveSymbols = ['💕', '💖', '💗', '💘', '💙', '💚', '💛', '🧡', '💜', '🖤', '🤍', '❤️', '💝', '💟', '♥️'];
+    const love = document.createElement('div');
+    love.className = 'floating-love';
+    love.innerHTML = loveSymbols[Math.floor(Math.random() * loveSymbols.length)];
+    love.style.left = Math.random() * 100 + 'vw';
+    love.style.animationDuration = (Math.random() * 3 + 4) + 's';
+    love.style.opacity = Math.random() * 0.8 + 0.2;
+    body.appendChild(love);
+    
+    // Hapus element setelah animasi selesai
+    setTimeout(() => {
+        if (love.parentNode) {
+            love.parentNode.removeChild(love);
+        }
+    }, 7000);
+}
+
+// Mulai efek love berterbangan
+function startFloatingHearts() {
+    setInterval(createFloatingLove, 800);
+    // Buat beberapa love langsung di awal
+    for(let i = 0; i < 5; i++) {
+        setTimeout(createFloatingLove, i * 200);
+    }
+}
+
+// Mulai efek setelah halaman load
+window.addEventListener('load', function() {
+    setTimeout(startFloatingHearts, 1000);
+});
 </script>
 <script src="https://feeldreams.github.io/heihbd/script.js"></script>
 <!-- Sampai Sini -->
